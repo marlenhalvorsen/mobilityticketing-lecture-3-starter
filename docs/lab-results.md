@@ -346,6 +346,8 @@ This can cause the revenue to be counted more than once.
 
 
 
+
+
 \## Decision record
 
 
@@ -355,6 +357,10 @@ I would use the SQL function for this case.
 
 
 It always reads the current data from payments and we do not have to refresh anything.
+
+
+
+The payments table stays as the authority for the revenue data.
 
 
 
