@@ -352,11 +352,11 @@ This can cause the revenue to be counted more than once.
 
 
 
-I would use the SQL function for this case.
+I would use the materialized view for this case.
 
 
 
-It always reads the current data from payments and we do not have to refresh anything.
+The report is read often and it is okay if the data is delayed.
 
 
 
@@ -364,13 +364,13 @@ The payments table stays as the authority for the revenue data.
 
 
 
-The materialized view is faster to read but can have old data.
+The materialized view can be refreshed on a schedule to get the latest data.
 
 
 
-The trigger summary is also fast to read, but our tests showed that it can become incorrect when payments are updated or deleted.
+If payments are corrected or deleted, the materialized view can be rebuilt from the payments data.
 
 
 
-The SQL function keeps the revenue logic in one place without storing another copy of the revenue data.
+This also avoids the problems we saw with the trigger when payments were updated or deleted.
 
